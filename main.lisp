@@ -1,21 +1,16 @@
 (in-package :transport)
 
-(defparameter *server* (make-instance 'server :port 2256))
-
-(defun get-default-server ()
-  *server*)
-
 (defun default-server-runp ()
-  (server-runp *server*))
+  (server-runp (get-default-server)))
 
 (defun start-default-server ()
-  (start-server *server*))
+  (start-server (get-default-server)))
 
 (defun stop-default-server ()
-  (stop-server *server*))
+  (stop-server (get-default-server)))
 
 (defun restart-default-server ()
-  (restart-server *server*))
+  (restart-server (get-default-server)))
 
 (defun send-file (host port path))
 

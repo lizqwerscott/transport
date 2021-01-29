@@ -1,4 +1,4 @@
-(in-package :transport)
+(in-package :transport.server)
 
 (defun decode-head (head)
   (json:decode-json-from-string (flexi-streams:octets-to-string head)))
@@ -64,5 +64,10 @@
 (defmethod restart-server ((server-one server))
   (stop-server server-one)
   (start-server server-one))
+
+(defvar *server* (make-instance 'server :port 2256))
+
+(defun get-default-server ()
+  *server*)
 
 (in-package :cl-user)
