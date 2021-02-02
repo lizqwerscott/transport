@@ -1,8 +1,9 @@
 (in-package :transport.client)
+;;;;TODO 创建一个任务链表，让任务在里面自由进行（多线程）
 
 (add-event "wait-reply" (list "127.0.0.1"))
 
-(defun wait-reply (host port reply)
+(defun wait-reply (host reply)
   (set-event "wait-reply" (list host))
   (let ((r-reply ""))
     (add-handle "wait-reply" 
@@ -21,7 +22,11 @@
                (let ((head (generate-file-head file allLength (length (elt datas i)) i)))
                  (send-data host port head (elt datas i)))
                (format t "wait1~%")
-               (wait-reply host port "finish")
+               (wait-reply host "finish")
                (format t "wait2~%")))))
+
+;;TODO need get the return
+(defun add-network (host port)
+  (send-data host port (generate-add-head) nil))
 
 (in-package :cl-user)

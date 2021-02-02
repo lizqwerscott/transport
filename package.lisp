@@ -22,7 +22,16 @@
     :get-event
     :set-event
     :add-handle
-    :fire-event))
+    :fire-event
+    ;;about gnode
+    :set-gnode
+    :god-nodep
+    ;;about node
+    :nodep 
+    :add-node
+    :set-node
+    :get-node
+    :list-node))
 
 (defpackage :transport.webhead
   (:use :common-lisp :uiop :transport.head :usocket :cl-json :flexi-streams)
@@ -33,6 +42,7 @@
     :get-data
     :generate-reply-head
     :generate-file-head
+    :generate-add-head
     :send-data))
 
 (defpackage :transport.server
@@ -46,7 +56,8 @@
 (defpackage :transport.client
   (:use :common-lisp :uiop :transport.head :transport.webhead :transport.server)
   (:export
-    :send-file))
+    :send-file
+    :add-network))
 
 (defpackage :transport
   (:use :common-lisp :uiop :transport.head :transport.server)

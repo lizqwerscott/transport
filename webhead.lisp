@@ -33,6 +33,12 @@
                    ("return" . nil)
                    ("size" . ,size)))) 
 
+(defun generate-add-head ()
+  (generate-head `(("command" . "addnode")
+                   ("sender" . ,(get-id))
+                   ("port". ,(get-port))
+                   ("return" . nil))))
+
 (defun send-data (host port head data)
   (let ((socket (socket-connect host port :element-type :default)))
     (unwind-protect

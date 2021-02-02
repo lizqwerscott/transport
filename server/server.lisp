@@ -40,6 +40,8 @@
                               (fire-event "wait-reply" (octets-to-string data))
                               (error-f "run-server" "in wait-reply, the port or host is not the event"))
                           (format t "Finish~%")))
+                       ((string= "addnode" (get-data :command head-json))
+                        (add-node (get-data :sender head-json) (host-to-string *remote-host*) (get-data :port head-json)))
                        (t (format t "Not now command~%")))
                  (when (get-data :return head-json)
                    (format t "send reply~%")
