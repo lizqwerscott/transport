@@ -14,11 +14,17 @@
                "usocket-server"
                ;;id
                "uuid"
+               ;;events
                )
   :components ((:file "package")
                (:file "head" :depends-on ("package"))
+               (:file "webhead" :depends-on ("head"))
                (:module "server"
-                        :depends-on ("package" "head")
+                        :depends-on ("package" "head" "webhead")
                         :serial t
                         :components ((:file "server")))
-               (:file "main" :depends-on ("package" "head" "server"))))
+               (:module "client"
+                        :depends-on ("package" "head" "webhead")
+                        :serial t
+                        :components ((:file "client")))
+               (:file "main" :depends-on ("package" "head" "webhead" "server" "client"))))

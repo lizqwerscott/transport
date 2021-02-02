@@ -1,18 +1,16 @@
 (in-package :transport)
 
 (defun default-server-runp ()
-  (server-runp (get-default-server)))
+  (server-runp))
 
 (defun start-default-server ()
-  (start-server (get-default-server)))
+  (start-server))
 
 (defun stop-default-server ()
-  (stop-server (get-default-server)))
+  (stop-server))
 
 (defun restart-default-server ()
-  (restart-server (get-default-server)))
-
-(defun send-file (host port path))
+  (restart-server))
 
 (defun get-file (host port file))
 
